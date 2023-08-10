@@ -1,302 +1,400 @@
-<!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<!doctype html>
+<html lang="en">
+
 <head>
-	
-  <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}" type="image/x-icon">
-  <meta charset="UTF-8">
-  <title>Credit Details</title>
-  
-  <!-- Font link -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>Credit Details</title>
+
+    <!-- Font link -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+
+
+
+
+    <style>
+        .background-image {
+            background-image:url("{{ url_for('static', filename='images/pred_bg_5_main.jpg') }}");
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .result {
+            margin: auto !important;
+            width: 35% !important;
+            border: 2px groove !important;
+        }
+
+        .container {
+            margin: 0.2rem !important;
+        }
+
+        .button-container {
+            display: flex !important;
+            justify-content: center !important;
+            margin-top: 20px !important;
+        }
+
+        
+
+        .input[type="submit"],
+        .btn {
+            display: inline-block !important;
+            padding: 10px 20px !important;
+            background-color: #000000df !important;
+            border-radius: 4rem !important;
+            box-shadow: 0 0 1rem rgba(124, 127, 238, 0.5) !important;
+            font-size: 16px !important;
+            color: #DAF7F7 !important;
+            letter-spacing: .1rem !important;
+            font-weight: 600 !important;
+            transition: .5s ease !important;
+            text-decoration: none !important;
+            margin: 10px !important;
+        }
+
+        .input[type="submit"]:hover,
+        .btn:hover {
+            background-color: #7C7FEE !important;
+            color: #DAF7F7 !important;
+            box-shadow: none !important;
+        }
+
+        .input[type="submit"]:active,
+        .btn:active {
+            background-color: #000000df !important;
+            color: #000000df !important;
+            box-shadow: 0 0 0.5rem rgba(124, 127, 238, 0.5) !important;
+        }
+
+
+        .popup {
+            width: 400px !important;
+            background: #DAF7FD !important;
+            border-radius: 1.5rem !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) scale(0.1) !important;
+            text-align: center !important;
+            padding: 0 30px 30px !important;
+            color: #333 !important;
+            visibility: hidden !important;
+            transition: transform 0.4s, top 0.4s !important;
+        }
+
+        .open-popup {
+            visibility: visible !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) scale(1) !important;
+        }
+
+        .popup .tck {
+            width: 100px !important;
+            margin-top: -50px !important;
+            border-radius: 50% !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+        }
+
+		.popup .ilck {
+            width: 10rem !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .popup h2 {
+            font-size: 38px !important;
+            font-weight: 500 !important;
+            margin: 30px 0 10px !important;
+        }
+
+        .popup button {
+            width: 100% !important;
+            margin-top: 50px !important;
+            padding: 10px 0 !important;
+            background: #6fd649 !important;
+            color: #fff !important;
+            border: 0 !important;
+            outline: none !important;
+            font-size: 18px !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .headingpred {
+            text-align: center !important;
+            margin: 0 auto !important;
+            min-width: fit-content !important;
+            max-width: fit-content !important;
+            min-height: fit-content !important;
+            max-height: fit-content !important;
+            padding: 0.5rem !important;
+            border: 0.1rem solid !important;
+            font-size: x-large;
+            font-family: 'Ubuntu', sans-serif !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .input_box {
+            font-size: 0.8rem !important;
+            border: 0.1rem solid !important;
+            border-radius: 8px !important;
+            padding: 0.4rem !important;
+            margin: 0.2rem !important;
+        }
+
+        label {
+            font-size: 0.8rem !important;
+            margin: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem !important;
+            font-weight: 500 !important;
+            letter-spacing: 0;
+            line-height: 1.5em;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+
+        fieldset {
+            min-width: fit-content;
+            min-height: fit-content;
+            border: 0.05rem solid !important;
+            padding: 1rem !important;
+            border-radius: .5rem;
+            margin: 0.5rem !important;
+        }
+
+        legend {
+            display: block !important;
+            width: fit-content !important;
+            padding: 0.5rem !important;
+            font-weight: bold;
+            margin-bottom: 0 !important;
+            font-size: 1.2rem !important;
+            line-height: inherit;
+            border: auto;
+            float: none !important;
+        }
+
+        b {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .phead {
+            margin-bottom: 0 !important;
+            font-size: 0.8rem;
+        }
+
+        .pbody {
+            margin-bottom: 0;
+            font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            fieldset{
+                display: block !important;
+                min-width: 100% !important;
+            }
+        }
+
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
-<style>
 
-	.background-image {
-		background-image:url("{{ url_for('static', filename='images/dp.jpg') }}");
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	  }
-
-	.result {
-		margin: auto;
-		width: 35%;
-		border: 2px groove;
-	}
-
-	.button-container {
-		display: flex;
-		justify-content: center;
-		margin-top: 20px;
-	}
-
-	.input[type="submit"],
-	.btn {
-		display: inline-block;
-		padding: 10px 20px;
-		background-color: #000000df;
-		border-radius: 4rem;
-		box-shadow: 0 0 1rem rgba(124, 127, 238, 0.5);
-		font-size: 16px;
-		color: #DAF7F7;
-		letter-spacing: .1rem;
-		font-weight: 600;
-		transition: .5s ease;
-		text-decoration: none;
-		margin: 10px;
-	}
-
-	.input[type="submit"]:hover,
-	.btn:hover {
-		background-color: #7C7FEE;
-		color: #DAF7F7;
-		box-shadow: none;
-	}
-
-	.input[type="submit"]:active,
-	.btn:active {
-		background-color: #000000df;
-		color: #000000df;
-		box-shadow: 0 0 0.5rem rgba(124, 127, 238, 0.5);
-	}
-
-
-	.popup{
-		width: 400px;
-		background: #DAF7F7;
-		border-radius: 6px;
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%,-50%) scale(0.1);
-		text-align: center;
-		padding: 0 30px 30px;
-		color: #333;
-		visibility: hidden;
-		transition: transform 0.4s, top 0.4s;
-	}
-
-	.open-popup{
-		visibility: visible;
-		top: 50%;
-		transform: translate(-50%,-50%) scale(1);
-	}
-
-	.popup img{
-		width: 100px;
-		margin-top: -50px;
-		border-radius: 50%;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	}
-
-	.popup h2{
-		font-size: 38px;
-		font-weight: 500;
-		margin: 30px 0 10px;
-	}
-
-	.popup button{
-		width: 100%;
-		margin-top: 50px;
-		padding: 10px 0;
-		background: #6fd649;
-		color: #fff;
-		border: 0;
-		outline: none;
-		font-size: 18px;
-		border-radius: 4px;
-		cursor: pointer;
-		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-	}
-	.headingpred{
-		margin: auto; 
-		width: 35%;
-		padding: 1%;
-		border: 2px solid;
-		text-align: center;
-		font-family: 'Ubuntu', sans-serif;
-	}
-	.input_box{
-		font-size: 1rem;
-		border: 2px solid;
-		border-radius: 8px;
-		padding:0.4rem;
-		margin:0.2rem;
-	}
-	label{
-		
-		font-size:1rem;
-		margin:0.5rem;
-	
-	}
-	fieldset{
-		border-width: medium;
-		border-radius: .5rem;
-	}
-  </style>
-  </head>
-  
 
 </style>
+
+</head>
 <body onload="flashMessage()" class="background-image">
 	
 	<div class="popup" id="popup">
-		<h1>Thank You!</h1>
+		<img class="tck" src="{{url_for('static', filename='/images/tick.png')}}">
+		<h1 style="margin-top:2rem;">Thank You!</h1>
 		<h3><em>Here is your Result</em></h3>
-		<h2>{{ data }}</h2>
-		<p> 0 = NOT DEFAULT </p>
-		<P> 1 = DEFAULT </p>
+		<h2>
+			{% if data == 0 %}
+			Not DEFAULT
+			{% else %}
+			DEFAULT
+			{% endif %}
+		</h2>
+		<p title="0 = NOT DEFAULT  1 = DEFAULT"> {{ data }} </p>
 		<button type="button" onclick="closePopup()">OK</button>
 	</div>
 
 	
+	<!-- background: #DAF7FD !important; -->
 	
-        
-
- <div class="predict">
+	<div style="height: 2rem;"></div>
+ <div class="predict container_fluid">
 	<h2 class="headingpred">Credit Card Default Prediction</h2>
 
      <!-- Main Input For Receiving Query to our ML -->
 	 <form method="POST" action="/pred">
-		<fieldset style="float:left;height: 480px;">
-			<legend><b>Personal Data:</b></legend>
-      <br>
-			<label for="id"><b>ID</b></label>
-			<input type="text" class="input_box" name="idx" placeholder="Enter Your Id" required="required" />
-			<br>
-			<p><b>Gender:</b></p>
-			<input type="radio" id="male" name="sex" value="1" required="required" />
-			<label for="male">Male</label>
-			<input type="radio" id="female" name="sex" value="2" required="required" />
-			<label for="female">Female</label>
-			<br>
-		
-			<p><b>Education:</b></p>
-			<input type="radio" id="graduate_school" name="education" value="1" required="required"/>
-			<label for="graduate_school">Graduate School</label>
-			<input type="radio" id="university" name="education" value="2" required="required"/>
-			<label for="university">University</label>
-			<input type="radio" id="high_school" name="education" value="3" required="required"/>
-			<label for="high_school">High School</label>
-			<input type="radio" id="others" name="education" value="4" required="required"/>
-			<label for="others">Others</label>
-			<input type="radio" id="unknown" name="education" value="5"required="required"/>
-			<label for="unknown">Unknown</label>
-			<br>
-			<p><b>Marrital Status:</b></p>
-			<input type="radio" id="married" name="marriage" value="1"required="required"/>
-			<label for="married">Married</label>
-			<input type="radio" id="single" name="marriage" value="2" required="required"/>
-			<label for="single">Single</label>
-			<input type="radio" id="others" name="marriage" value="3" required="required"/>
-			<label for="others">Others</label>
-			<br>
-			<br>
-			<label for="age"><b>Age:</b></label>
-			<input type="text" class="input_box" name="age" placeholder="in years" required="required" />
-			<br>
-			<br>
-			<p><b>Limit Balance:</b><br>
-			Amount of given credit in dollar (includes individual and family/supplementary credit)</p>
-			<input type="text" class="input_box" name="limit_balance" placeholder="amount in dollar" required="required" />
-			
+		<fieldset style="float:left;">
+            <legend>
+                Personal Data
+            </legend>
+            <label for="id">ID</b></label>
+            <input type="text" class="input_box" name="idx" placeholder="Enter Your Id" required="required" />
+            <br>
+            <p><b>Gender:</b></p>
+            <input type="radio" id="male" name="sex" value="1" required="required" />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="sex" value="2" required="required" />
+            <label for="female">Female</label>
+            <br>
+
+            <p><b>Education:</b></p>
+            <input type="radio" id="graduate_school" name="education" value="1" required="required" />
+            <label for="graduate_school">Graduate School</label>
+            <input type="radio" id="university" name="education" value="2" required="required" />
+            <label for="university">University</label>
+            <input type="radio" id="high_school" name="education" value="3" required="required" />
+            <label for="high_school">High School</label>
+            <input type="radio" id="others" name="education" value="4" required="required" />
+            <label for="others">Others</label>
+            <input type="radio" id="unknown" name="education" value="5" required="required" />
+            <label for="unknown">Unknown</label>
+            <br>
+            <p><b>Marrital Status:</b></p>
+            <input type="radio" id="married" name="marriage" value="1" required="required" />
+            <label for="married">Married</label>
+            <input type="radio" id="single" name="marriage" value="2" required="required" />
+            <label for="single">Single</label>
+            <input type="radio" id="othersx" name="marriage" value="3" required="required" />
+            <label for="othersx">Others</label>
+            <br />
+            <label for="age"> <b>Age:</b></label>
+            <input type="text" class="input_box" name="age" placeholder="in years" required="required" />
+            
+            <p class="phead">
+                <b>Limit Balance:</b>
+            <p class="pbody">Amount of given credit in dollar (includes individual and family/supplementary credit)</p>
+            </p>
+
+            <input type="text" class="input_box" name="limit_balance" placeholder="amount in dollar"
+                required="required" />
+
 		</fieldset>
-		<fieldset style="height: 480px;">
-			<legend><b>Credit Data:</b></legend>
-			<div class="repay_status_parent">
-				<p><b>Repayment Status:</b><br>
-				(-1=pay duly, 1=one month delay, 2=two months delay, … 9=delay for nine months and above)</p>						
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="repay_status">April</label><br>
-					<input class="input_box"  name="pay0" id="pay_6" min="-2" max="9" type="number" value="0" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="repay_status">May</label><br>
-					<input class="input_box"  name="pay2" id="pay_5" min="-2" max="9" type="number" value="0" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="repay_status">June</label><br>
-					<input class="input_box"  name="pay3" id="pay_4" min="-2" max="9" type="number" value="0" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="repay_status">July</label><br>
-					<input class="input_box"  name="pay4" id="pay_3" min="-2" max="9" type="number" value="0" required>
-				</div>
-				<div style="float:left;margin-right: 1.5em;">
-					<label for="repay_status">August</label><br>
-					<input class="input_box"  name="pay5" id="pay_2" min="-2" max="9" type="number" value="0" required>
-				</div>
-				<div style="float:left;">
-					<label for="repay_status">September</label><br>
-					<input class="input_box"  name="pay6" id="pay_0" min="-2" max="9" type="number" value="0" required>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<div class="bill_amount_parent">
-				<p><b>Bill Amounts:</b> Amount of bill statements (in dollar)</p>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="bill_amount">April</label><br>
-					<input class="input_box" name="bill_amount1" id="bill_amt6" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="bill_amount">May</label><br>
-					<input class="input_box" name="bill_amount2" id="bill_amt5" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="bill_amount">June</label><br>
-					<input class="input_box" name="bill_amount3" id="bill_amt4" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="bill_amount">July</label><br>
-					<input class="input_box" name="bill_amount4" id="bill_amt3" value="0" type="text" required>
-				</div>
-				<div style="float:left;margin-right: 1.5em;">
-					<label for="bill_amount">August</label><br>
-					<input class="input_box" name="bill_amount5" id="bill_amt2" value="0" type="text" required>
-				</div>
-				<div style="float:left;">
-					<label for="bill_amount">September</label><br>
-					<input class="input_box" name="bill_amount6" id="bill_amt1" value="0" type="text" required>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div style="display: inline-block;"  class="previous_payments_parent">
-				
-				<p><b>Previous Payments:</b> Amount of previous payments (in dollar)</p>			
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="previous_payments">April</label><br>
-					<input class="input_box" name="pay_amount1" id="pay_amt6" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="previous_payments">May</label><br>
-					<input class="input_box" name="pay_amount2" id="pay_amt5" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="previous_payments">June</label><br>
-					<input class="input_box" name="pay_amount3" id="pay_amt4" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="previous_payments">July</label><br>
-					<input class="input_box" name="pay_amount4" id="pay_amt3" value="0" type="text" required>
-				</div>
-				<div style="float:left; margin-right: 1.5em;">
-					<label for="previous_payments">August</label><br>
-					<input class="input_box" name="pay_amount5" id="pay_amt2" value="0" type="text" required>
-				</div>
-				<div style="float:left;">
-					<label for="previous_payments">September</label><br>
-					<input class="input_box" name="pay_amount6" id="pay_amt1" type="text" value="0" required>
-				</div>
-			</div>
+		<fieldset>
+			<legend class="flegend">
+                Credit Data
+            </legend>
+            <div class="repay_status_parent">
+                <p class="phead"><b>Repayment Status:</b>
+                <p class="pbody">(-1=pay duly, 1=one month delay, 2=two months delay, … 9=delay for nine months
+                    and above)</p>
+                </p>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="repay_status">April</label><br>
+                    <input class="input_box" name="pay0" id="pay_6" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="repay_status">May</label><br>
+                    <input class="input_box" name="pay2" id="pay_5" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="repay_status">June</label><br>
+                    <input class="input_box" name="pay3" id="pay_4" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="repay_status">July</label><br>
+                    <input class="input_box" name="pay4" id="pay_3" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+                <div style="float:left;margin-right: 1.5em;">
+                    <label for="repay_status">August</label><br>
+                    <input class="input_box" name="pay5" id="pay_2" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+                <div style="float:left;">
+                    <label for="repay_status">September</label><br>
+                    <input class="input_box" name="pay6" id="pay_0" min="-2" max="9" type="number" value="0"
+                        required>
+                </div>
+            </div>
+            <div class="bill_amount_parent" style="display: inline-block;">
+                <p class="phead">
+                    <b>Bill Amounts:</b>
+                <p class="pbody">Amount of bill statements (in dollar)</p>
+                </p>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="bill_amount">April</label><br>
+                    <input class="input_box" name="bill_amount1" id="bill_amt6" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="bill_amount">May</label><br>
+                    <input class="input_box" name="bill_amount2" id="bill_amt5" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="bill_amount">June</label><br>
+                    <input class="input_box" name="bill_amount3" id="bill_amt4" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="bill_amount">July</label><br>
+                    <input class="input_box" name="bill_amount4" id="bill_amt3" value="0" type="text" required>
+                </div>
+                <div style="float:left;margin-right: 1.5em;">
+                    <label for="bill_amount">August</label><br>
+                    <input class="input_box" name="bill_amount5" id="bill_amt2" value="0" type="text" required>
+                </div>
+                <div style="float:left;">
+                    <label for="bill_amount">September</label><br>
+                    <input class="input_box" name="bill_amount6" id="bill_amt1" value="0" type="text" required>
+                </div>
+            </div>
+
+            <div style="display: inline-block;" class="previous_payments_parent">
+                <p class="phead">
+                    <b>Previous Payments:</b>
+                <p class="pbody">Amount of previous payments (in dollar)</p>
+                </p>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="previous_payments">April</label><br>
+                    <input class="input_box" name="pay_amount1" id="pay_amt6" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="previous_payments">May</label><br>
+                    <input class="input_box" name="pay_amount2" id="pay_amt5" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="previous_payments">June</label><br>
+                    <input class="input_box" name="pay_amount3" id="pay_amt4" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="previous_payments">July</label><br>
+                    <input class="input_box" name="pay_amount4" id="pay_amt3" value="0" type="text" required>
+                </div>
+                <div style="float:left; margin-right: 1.5em;">
+                    <label for="previous_payments">August</label><br>
+                    <input class="input_box" name="pay_amount5" id="pay_amt2" value="0" type="text" required>
+                </div>
+                <div style="float:left;">
+                    <label for="previous_payments">September</label><br>
+                    <input class="input_box" name="pay_amount6" id="pay_amt1" type="text" value="0" required>
+                </div>
+            </div>
 		</fieldset>
 		<br>
 		
@@ -330,4 +428,5 @@
   </script>
 
 </body>
+
 </html>
