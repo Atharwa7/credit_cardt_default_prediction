@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 import numpy as np
 import pandas as pd
-import pickle
+import pickle5 as pickle
 
 
 app = Flask(__name__) #Initialise app
