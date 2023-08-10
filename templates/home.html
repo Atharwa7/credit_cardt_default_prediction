@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CREDIT PREDIC</title>
+
+    <!-- Box icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link
+      href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity=
+"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="preconnect" 
+          href="https://fonts.gstatic.com" />
+    <link
+      href=
+"https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom css -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- header design -->
+    <header class="header">
+        <a href="#" class="logol">CREDIT PREDIC</a>
+
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#blogs">Blogs</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- home section design -->
+    <section class="container_fluid home" id="home">
+      <div class="home-content">
+          <h3>Welcome to</h3>
+          <h1>Credit Card Default</h1>
+          <h3>We Are <span class="multiple-text"></span></h3>
+          <p>This Web app typically Provides users to predict their credit card repayement status and give information about the default status with the help of their credentials </p>
+          <div class="social-media">
+              <a  style="text-decoration: none;" href="#"><i class='bx bx-menu'></i></a>
+              <a  style="text-decoration: none;" href="#"><i class='bx bxl-twitter'></i></a>
+              <a  style="text-decoration: none;" href="#"><i class='bx bxl-instagram-alt'></i></a>
+              <a style="text-decoration: none;"  href="#"><i class='bx bxl-linkedin'></i></a>
+          </div>
+          <a href="/predict.html" class="btn">Want To Predict ?</a>
+      </div>
+
+  
+    <!-- <div class="container_fluid"> -->
+      <div class="h_img_container">
+          <img class="h_img_bg" src="{{url_for('static', filename='/images/home_img_bg.png')}}">
+          <img class="h_img_overlay" src="{{url_for('static', filename='/images/mag_glass.png')}}" alt="">
+      </div>
+      <!-- </div> -->
+  </section>
+        
+    <section class="container_fluid about" id="about" >
+        <div class="about-img">
+            <img src="{{url_for('static', filename='/images/Group 5.png ')}}" class="about-img2">
+        </div>
+  
+        <div class="about-content">
+            <h2 class="heading" >About <span>Default Of Credit Card</span></h2>
+            <h3>How Credit Default Occurs</h3>
+            <p id="default-content" style="text-align: justify;">Credit card default occurs when a cardholder fails to make the required minimum payment on their credit card account within a specific period, typically 30 days past the due date. This failure to make timely payments can lead to various consequences and financial difficulties for the cardholder.</p>
+            <p id="extra-content" style="display: none; text-align: justify;">When a credit card account goes into default. Late Payment Fees: The credit card issuer may charge late payment fees for each missed or late payment. Increased Interest Rates: The credit card issuer may raise the interest rate on the account, often to a higher penalty rate. Negative Impact on Credit Score: Defaulting on credit card payments can significantly impact the cardholder's credit score. A lower credit score can make it harder to obtain credit in the future and may result in higher interest rates on loans or credit cards. <br><br>You have several options to handle your debt. You can continue to pay it off, try to settle the debt for less than owed or file for bankruptcy. One might argue that a fourth option exists, which is to do nothing. But ignoring the problem will not make it go away. If you are able to evade your creditors until the statute of limitations for debt is reached, you then cannot be successfully sued in court for the debt. But remember, even in this unlikely scenario, you still owe the debt, so you have not in fact handled the debt.
+
+            </p>
+            <button id="toggle-btn" class="btn">Read More</button>
+        </div>
+    </section>
+    
+
+    <script>
+        var toggleBtn = document.getElementById("toggle-btn");
+        var defaultContent = document.getElementById("default-content");
+        var extraContent = document.getElementById("extra-content");
+    
+        var isExpanded = false;
+    
+        toggleBtn.addEventListener("click", function() {
+            isExpanded = !isExpanded;
+            if (isExpanded) {
+                extraContent.style.display = "block";
+                toggleBtn.textContent = "Read Less";
+            } else {
+                extraContent.style.display = "none";
+                toggleBtn.textContent = "Read More";
+            }
+        });
+    </script>
+    
+    
+
+    <!-- services section design -->
+   
+      <style>
+        /* CSS styles */
+      
+        .services-box {
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+      
+        .services-box.expand {
+          max-height: 1000px;
+        }
+      
+        .btn-container {
+          text-align: center;
+        }
+      
+        .btn-container .btn {
+          display: inline-block;
+          background-color: #0ef;
+          color: #323946;
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+        }
+      
+        .btn-container .btn:hover {
+          background-color: #0ef;
+        }
+      </style>
+      
+      <section class="services" id="services">
+        <h2 class="heading">Our <span>Services</span></h2>
+      
+        <div class="services-container">
+          <div class="services-box">
+            <i class='bx bx-credit-card'></i>
+            <h3>Credit Risk Assessment</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Utilize machine learning algorithms to assess the credit risk of individuals and predict the likelihood of credit card default</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Credit Risk Assessment is a crucial service in the context of credit card default prediction. It involves the application of advanced machine learning techniques to analyze and evaluate the creditworthiness of individuals or businesses. The goal is to assess the risk associated with extending credit to potential borrowers and predict the likelihood of default</p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+      
+          <div class="services-box">
+            <i class='bx bx-line-chart'></i>
+            <h3>Predictive Analytics</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Utilize advanced analytics techniques to analyze patterns and trends in credit card data, enabling accurate predictions of potential defaulters</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Predictive analytics is a branch of advanced analytics that utilizes historical data, statistical algorithms, and machine learning techniques to make predictions about future events or behaviors. It involves extracting meaningful insights from data to identify patterns, trends, and relationships, and then using those insights to forecast outcomes.</p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+      
+          <div class="services-box">
+            <i class='bx bx-cog'></i>
+            <h3>Model Development and Training</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Build robust machine learning models specifically tailored for credit card default prediction using cutting-edge techniques</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Model Development and Training service empowers businesses to leverage the power of machine learning to predict credit card defaulters effectively. By harnessing cutting-edge algorithms and leveraging years of expertise, we enable our clients to make data-driven decisions, mitigate risks, and optimize their credit card management processes.</p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+      
+          <!-- Additional service containers -->
+          <div class="services-box">
+            <i class='bx bx-merge'></i>
+            <h3>Model Integration</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Integrate machine learning models into your existing credit card management systems to enhance risk assessment and decision-making processes.</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Model Integration refers to the process of incorporating machine learning models into existing credit card management systems or workflows. It involves seamlessly integrating the predictive models developed for credit card default prediction into the operational processes of an organization</p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+      
+          <div class="services-box">
+            <i class='bx bx-shield'></i>
+            <h3>Performance Monitoring and Evaluation</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Implement mechanisms to continuously monitor the performance of prediction models, ensuring accuracy and reliability over time</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Performance monitoring and evaluation is a crucial aspect of any machine learning-based system, including credit card default prediction. It involves continuously monitoring the performance and effectiveness of the prediction models and evaluating their accuracy, reliability, and efficiency over time. Here's a short note on performance monitoring and evaluation</p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+      
+          <div class="services-box">
+            <i class='bx bx-lock'></i>
+            <h3>Data Privacy and Compliance</h3><br>
+            <div class="content">
+              <p align="justify" class="default-content">Ensure adherence to data privacy regulations and implement robust security measures to protect sensitive customer information</p><br>
+              <p align="justify" class="extra-content" style="display: none;">Data privacy and compliance refer to the measures and regulations put in place to protect the privacy and security of personal and sensitive data collected by organizations. It involves ensuring that data is collected, stored, processed, and shared in a manner that aligns with applicable laws, regulations, and industry standards.
+
+              </p>
+            </div>
+            <div class="btn-container">
+              <a href="#" class="btn read-more">Read More</a>
+              <a href="#" class="btn read-less" style="display: none;">Read Less</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <script>
+        // JavaScript code
+        var servicesBoxes = document.querySelectorAll(".services-box");
+      
+        servicesBoxes.forEach(function (box) {
+          var readMoreButton = box.querySelector(".read-more");
+          var readLessButton = box.querySelector(".read-less");
+          var defaultContent = box.querySelector(".default-content");
+          var extraContent = box.querySelector(".extra-content");
+      
+          readMoreButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            box.classList.add("expand");
+            readMoreButton.style.display = "none";
+            readLessButton.style.display = "inline-block";
+            extraContent.style.display = "block";
+          });
+      
+          readLessButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            box.classList.remove("expand");
+            readMoreButton.style.display = "inline-block";
+            readLessButton.style.display = "none";
+            extraContent.style.display = "none";
+          });
+        });
+      </script>
+      
+      
+    <!-- Blogs section design -->
+    <section class="blogs" id="blogs">
+        <h2 class="heading">Latest <span>Blogs</span></h2>
+
+        <div class="blogs-container">
+            <div class="blogs-box">
+                <img src="{{url_for('static', filename='/images/Blogs 1.jpg ')}}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nisi.</p>
+                    <a href="https://cardinsider.com/blog/bob-financial-launches-3-new-pragati-rupay-credit-cards/"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
+            <div class="blogs-box">
+                <img src="{{url_for('static', filename='/images/Blogs 2.jpg')}}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, harum.</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
+            <div class="blogs-box">
+                <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, natus.</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
+            <div class="blogs-box">
+                <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, suscipit!</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
+            <div class="blogs-box">
+                <img src="{{url_for('static', filename='/images/Blogs 5.jpg')}}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, provident.</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
+            <div class="blogs-box">
+                <img src="{{ url_for('static', filename='/images/Blogs 6.jpg') }}" alt="">
+                <div class="blogs-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore?</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact section desing -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Us!</span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <input type="text" aria-required="" placeholder="Full Name">
+                <input type="email" aria-required="" placeholder="Email Address">
+            </div>
+            <div class="input-box">
+                <input type="number" aria-required="" placeholder="Mobile Number">
+                <input type="text" aria-required="" placeholder="Email subject">
+            </div>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" aria-required="" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- footer design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by CREDEX | All Rights Reserverd</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- typed js -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- custom js -->
+    <script src="{{url_for('static', filename='css/js/script.js')}}"></script>
+
+
+
+        <!-- Optional JavaScript; choose one of the two! -->
+  
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity=
+"sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
+</body>
+</html>
