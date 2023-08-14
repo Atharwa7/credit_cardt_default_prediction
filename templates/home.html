@@ -45,7 +45,7 @@
         <nav class="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
-            <a href="#services">Services</a>
+            <a href="#services">Analysis</a>
             <a href="#blogs">Blogs</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -271,56 +271,63 @@
             <div class="blogs-box">
                 <img src="{{url_for('static', filename='images/Blogs_1.jpg')}}" alt="">
                 <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nisi.</p>
-                    <a href="https://cardinsider.com/blog/bob-financial-launches-3-new-pragati-rupay-credit-cards/"><i class='bx bx-link-external' ></i></a>
-                </div>
-            </div>
+                  <h4>Random Forest</h4>
+                  <h3>Accuracy - 82%</h3>
+                  <p>Random Forest is a classifier that contains a number of decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset</p>
+                  <a href="https://www.javatpoint.com/machine-learning-random-forest-algorithm"><i class='bx bx-link-external' ></i></a>
+              </div>
+          </div>
 
-            <div class="blogs-box">
-                <img src="{{url_for('static', filename='/images/Blogs 2.jpg')}}" alt="">
-                <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, harum.</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
-                </div>
+        <div class="blogs-box">
+            <img src="{{url_for('static', filename='/images/Blogs 2.jpg')}}" alt="">
+            <div class="blogs-layer">
+                <h4>Adaboost</h4>
+                <h3>Accuracy - 81%</h3>
+                <p>AdaBoost is a machine learning ensemble method that iteratively combines weak learners, assigning higher weights to misclassified samples, creating a strong classifier.</p>
+                <a href="https://en.wikipedia.org/wiki/AdaBoost#:~:text=Article%20Talk,learning%20algorithms%20to%20improve%20performance."><i class='bx bx-link-external' ></i></a>
             </div>
+         </div>
 
-            <div class="blogs-box">
-                <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
-                <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, natus.</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
-                </div>
-            </div>
+        <div class="blogs-box">
+          <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
+          <div class="blogs-layer">
+              <h4>Gradient Boosting Decision Trees</h4>
+              <h3>Accuracy - 80%</h3>
+              <p>(GBDT) is an ensemble machine learning method combining decision trees, iteratively improving predictions via gradient optimization.</p>
+              <a href="https://neptune.ai/blog/gradient-boosted-decision-trees-guide#:~:text=In%20gradient%20boosting%2C%20an%20ensemble,average%20of%20all%20weak%20learners."><i class='bx bx-link-external' ></i></a>
+           </div>
+         </div>
 
-            <div class="blogs-box">
-                <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
-                <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, suscipit!</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
-                </div>
-            </div>
+        <div class="blogs-box">
+         <img src="{{url_for('static', filename='/images/Blogs 4.jpg')}}" alt="">
+         <div class="blogs-layer">
+            <h4>Logistic Regression</h4>
+            <h3>Accuracy - 78%</h3>
+            <p>Logistic regression is a binary classification algorithm that models the probability of an outcome using a logistic function, separating classes via a linear decision boundary.</p>
+            <a href="https://www.javatpoint.com/logistic-regression-in-machine-learning#:~:text=Logistic%20regression%20is%20one%20of,of%20a%20categorical%20dependent%20variable."><i class='bx bx-link-external' ></i></a>
+          </div>
+          </div>
 
-            <div class="blogs-box">
-                <img src="{{url_for('static', filename='/images/Blogs 5.jpg')}}" alt="">
-                <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, provident.</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
-                </div>
-            </div>
 
-            <div class="blogs-box">
-                <img src="{{ url_for('static', filename='/images/Blogs 6.jpg') }}" alt="">
-                <div class="blogs-layer">
-                    <h4>Web design</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore?</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
-                </div>
-            </div>
+        <div class="blogs-box">
+         <img src="{{url_for('static', filename='/images/Blogs 5.jpg')}}" alt="">
+         <div class="blogs-layer">
+           <h4>Decision Tree</h4>
+           <h3>Accuracy - 72%</h3>
+           <p>Decision Tree is a machine learning algorithm that makes decisions by branching based on features, creating a tree-like structure for classification and regression tasks.</p>
+           <a href="https://www.javatpoint.com/machine-learning-decision-tree-classification-algorithm"><i class='bx bx-link-external' ></i></a>
+        </div>
+       </div>
+
+       <div class="blogs-box">
+          <img src="{{ url_for('static', filename='/images/Blogs 6.jpg') }}" alt="">
+          <div class="blogs-layer">
+           <h4>Naive Bayes</h4>
+           <h3>Accuracy - 38%</h3>
+           <p>Naive Bayes is a probabilistic classification algorithm. It assumes features are independent and calculates the likelihood of a class given input using Bayes' theorem.</p>
+           <a href="https://www.javatpoint.com/machine-learning-naive-bayes-classifier"><i class='bx bx-link-external' ></i></a>
+        </div>
+      </div>
         </div>
     </section>
 
